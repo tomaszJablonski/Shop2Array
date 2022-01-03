@@ -19,15 +19,14 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Welcome in GreatShop");
-        System.out.println();
         String[] productNames = new String[]
                 {"milk","sugar","butter","bread","salt","sausages","cheese","tea","coffee","flour"};
 
-        double[] price = new double[]{ 2.99,4.99,8.50,2.50,1.99,4.99,5.15,3.55,15.99,3.99};
+        double[] price = new double[]{2.99,4.99,8.50,2.50,1.99,4.99,5.15,3.55,15.99,3.99};
 
-        boolean workOrNotwork=true;
+        boolean work=true;
 
-        while (workOrNotwork){
+        while (work){
             Scanner scanner = new Scanner(System.in);
             System.out.println();
             System.out.println("Choose your option");
@@ -52,29 +51,70 @@ public class Main {
                     System.out.println("You choose option -> SearchProduct");
                     System.out.println("Enter the name of product");
                     String nameProduct = scanner.next();
-                    boolean search=false;
                     if(nameProduct != null ){
-                        for (int i = 0; i < productNames.length && i<nameProduct.length(); i++) {
+                        for (int i = 0; i <= productNames.length; i++) {
                             if (productNames[i].equals(nameProduct)) {
                                 System.out.println("Product " + nameProduct + " is exist on the list ");
                                 break;
                             }
+                            else  {
+                                System.out.println("The name is does not exist on the list");
+                                break;
+                            }
+
                         }
-                    } else if(search) {
-                        System.out.println("The name is does not exist");
                     }
 
                     break;
+
                 //TODO dodac zmiane ceny produktu
                 case 3:
+                    System.out.println("You choose option -> Change Price Product ");
+                    System.out.println("First Enter the name of product");
+                    String product = scanner.next();
+                    System.out.println("Enter the new price for your product");
+                    double newPrice = scanner.nextDouble();
+                    if(product != null && newPrice>0 ){
+                        for (int i = 0; i <= productNames.length && i<=price.length; i++) {
+                            if (productNames[i].equals(product)) {
+                                price[i] = newPrice;
+                                System.out.println("Change made");
+                            }
+                            else  {
+                                System.out.println("not work");
+
+
+                            }
+
+                        }
+                    }
+                    
+
                         break;
                 //TODO dodac zmiane nazwy produktu
                 case 4:
+                    boolean changeProduct = false;
+                    System.out.println("Jaki element w koszyku chcesz modyfikować ? ");
+                    String toChangeP = scanner.next();
+                    System.out.println("Na jakie produkt chcesz zamienić?");
+                    String afterChangeP = scanner.next();
+                    for (int i = 0; i < productNames.length; i++) {
+                        if (productNames[i] != null) {
+                            productNames[i] = afterChangeP;
+                            changeProduct = true;
+                        } else if (productNames[i] != toChangeP) {
+                            System.out.println("Nie ma takiego produkut na liście");
+                        }
+                        if (changeProduct) {
+                            System.out.println("Element został zamieniony");
+                            break;
+                        }
+                    }
 
                     break;
 
                 case 5:
-                    workOrNotwork=false;
+                    work=false;
                     break;
 
             }
