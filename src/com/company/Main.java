@@ -35,7 +35,7 @@ public class Main {
             int yourOption = scanner.nextInt();
 
             switch (yourOption){
-                //TODO dostepne produkty - ZROBIONE
+                //TODO dostepne produkty - zrobione !
                 case 1:
                     System.out.println("You choose option -> Your available product");
 
@@ -46,28 +46,24 @@ public class Main {
                     }
                     break;
 
-                //TODO zrobic wyszukiwanie produktow
+                //TODO zrobic wyszukiwanie produktow - zrobione !
                 case 2:
                     System.out.println("You choose option -> SearchProduct");
                     System.out.println("Enter the name of product");
                     String nameProduct = scanner.next();
                     if(nameProduct != null ){
-                        for (int i = 0; i <= productNames.length; i++) {
+                        for (int i = 0; i < productNames.length; i++) {
                             if (productNames[i].equals(nameProduct)) {
                                 System.out.println("Product " + nameProduct + " is exist on the list ");
-                                break;
-                            }
-                            else  {
-                                System.out.println("The name is does not exist on the list");
-                                break;
                             }
 
+                            }
                         }
-                    }
+
 
                     break;
 
-                //TODO dodac zmiane ceny produktu
+                //TODO dodac zmiane ceny produktu - zrobione
                 case 3:
                     System.out.println("You choose option -> Change Price Product ");
                     System.out.println("First Enter the name of product");
@@ -75,41 +71,31 @@ public class Main {
                     System.out.println("Enter the new price for your product");
                     double newPrice = scanner.nextDouble();
                     if(product != null && newPrice>0 ){
-                        for (int i = 0; i <= productNames.length && i<=price.length; i++) {
+                        for (int i = 0; i < productNames.length && i < price.length; i++) {
                             if (productNames[i].equals(product)) {
                                 price[i] = newPrice;
                                 System.out.println("Change made");
                             }
-                            else  {
-                                System.out.println("not work");
-
-
-                            }
 
                         }
                     }
-                    
-
                         break;
-                //TODO dodac zmiane nazwy produktu
+
+                    //TODO dodac zmiane nazwy produktu - zrobione
                 case 4:
-                    boolean changeProduct = false;
-                    System.out.println("Jaki element w koszyku chcesz modyfikować ? ");
+                    System.out.println("Which element you want change ? ");
                     String toChangeP = scanner.next();
-                    System.out.println("Na jakie produkt chcesz zamienić?");
+                    System.out.println("Enter the new name of product ?");
                     String afterChangeP = scanner.next();
-                    for (int i = 0; i < productNames.length; i++) {
-                        if (productNames[i] != null) {
-                            productNames[i] = afterChangeP;
-                            changeProduct = true;
-                        } else if (productNames[i] != toChangeP) {
-                            System.out.println("Nie ma takiego produkut na liście");
-                        }
-                        if (changeProduct) {
-                            System.out.println("Element został zamieniony");
-                            break;
+                    if(toChangeP != null) {
+                        for (int i = 0; i < productNames.length; i++) {
+                            if (productNames[i].equals(toChangeP)) {
+                                productNames[i] = afterChangeP;
+                                System.out.println("Change made");
+                            }
                         }
                     }
+
 
                     break;
 
